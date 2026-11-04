@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudHire - Job Portal</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">Cloud<span>Hire</span></div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="#jobs">Find Jobs</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="/login" class="login">Login</a>
+            <a href="/register" class="register">Register</a>
+            <a href="/admin/login" class="login">Admin</a>
+        </div>
+
+    </nav>
+
+    <section class="hero">
+
+        <h1>Find Your <span>Dream Job</span></h1>
+
+        <p>
+            Discover exciting career opportunities
+            and take the next step in your career.
+        </p>
+
+        <div class="search-box">
+
+            <input type="text"
+                   id="job-title"
+                   placeholder="Job title or keyword">
+
+            <input type="text"
+                   id="job-location"
+                   placeholder="Location">
+
+            <button onclick="searchJobs()">Search Jobs</button>
+
+        </div>
+
+        <p class="popular">
+            Popular: Python Developer | Web Developer | Data Analyst
+        </p>
+
+    </section>
+
+    <section class="jobs" id="jobs">
+
+        <h2>Featured Jobs</h2>
+
+        <p class="subtitle">
+            Explore the latest job opportunities
+        </p>
+
+        <div class="job-container">
+
+            {% for job in jobs %}
+
+            <div class="job-card">
+
+                <h3>{{ job.title }}</h3>
+
+                <p>{{ job.company }}</p>
+
+                <p class="details">
+                    {{ job.location }} | {{ job.type }}
+                </p>
+
+                {% for skill in job.skills %}
+                    <span class="tag">{{ skill }}</span>
+                {% endfor %}
+
+                <a href="{{ url_for('job_details', job_id=job.id) }}">
+                    <button type="button">View Details</button>
+                </a>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        <p id="no-results" style="display:none;">
+            No matching jobs found. Try another search.
+        </p>
+
+    </section>
+
+    <section class="about" id="about">
+
+        <h2>Your Career Starts Here</h2>
+
+        <p>
+            CloudHire connects job seekers with
+            exciting career opportunities.
+        </p>
+
+    </section>
+
+    <footer id="contact">
+        <p>© 2026 CloudHire | Cloud-Based Job Portal</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

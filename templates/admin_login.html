@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Login - CloudHire</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        .admin-login {
+            max-width: 440px;
+            margin: 65px auto;
+            padding: 35px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px #00000010;
+        }
+
+        .admin-login h1 {
+            text-align: center;
+            color: #1e40af;
+            margin-bottom: 12px;
+        }
+
+        .admin-login p {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 25px;
+        }
+
+        .admin-login label {
+            display: block;
+            margin: 17px 0 7px;
+            font-weight: bold;
+        }
+
+        .admin-login input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        .admin-login input:focus {
+            border-color: #2563eb;
+        }
+
+        .admin-login button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 14px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .admin-login button:hover {
+            background: #1d4ed8;
+        }
+
+        .message {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .back-home {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #2563eb;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">Cloud<span>Hire</span></div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+        </div>
+
+    </nav>
+
+    <div class="admin-login">
+
+        <h1>Admin Login</h1>
+
+        <p>Manage jobs and applications on CloudHire.</p>
+
+        {% with messages = get_flashed_messages() %}
+            {% for message in messages %}
+                <div class="message">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endwith %}
+
+        <form method="POST"
+              action="{{ url_for('admin_login') }}">
+
+            <label for="email">Admin Email</label>
+
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter admin email"
+                required
+            >
+
+            <label for="password">Password</label>
+
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter admin password"
+                required
+            >
+
+            <button type="submit">
+                Login as Admin
+            </button>
+
+        </form>
+
+        <a href="/" class="back-home">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</body>
+</html>
