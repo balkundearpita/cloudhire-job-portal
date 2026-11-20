@@ -76,7 +76,7 @@ def home():
 
 @app.route("/job/<int:job_id>")
 def job_details(job_id):
-    job = next((j for j in jobs if j["id"] == job_id), None)
+    job = next((j for j in jobs if nj["id"] == job_id), None)
 
     if not job:
         return "Job not found", 404

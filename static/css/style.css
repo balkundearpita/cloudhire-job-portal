@@ -1,58 +1,90 @@
+```css
+/* =========================
+   CLOUDHIRE - GLOBAL STYLES
+========================= */
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    background: #f5f7fb;
-    color: #1e293b;
+    background: #f8faff;
+    color: #172554;
+    line-height: 1.6;
 }
+
+/* NAVIGATION */
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 8%;
-    background: white;
+    padding: 18px 8%;
+    background: #ffffff;
+    box-shadow: 0 2px 15px rgba(15, 23, 42, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .logo {
-    font-size: 26px;
-    font-weight: bold;
+    font-size: 28px;
+    font-weight: 800;
     color: #2563eb;
+    letter-spacing: -1px;
 }
 
 .logo span {
-    color: #1e293b;
+    color: #172554;
 }
 
 .nav-links a,
 .nav-buttons a {
     text-decoration: none;
     margin-left: 22px;
-    color: #334155;
+    color: #475569;
     font-size: 15px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-buttons .login:hover {
+    color: #2563eb;
 }
 
 .register {
     background: #2563eb;
     color: white !important;
-    padding: 11px 20px;
-    border-radius: 6px;
+    padding: 11px 22px;
+    border-radius: 8px;
 }
+
+.register:hover {
+    background: #1d4ed8;
+}
+
+/* HERO SECTION */
 
 .hero {
     text-align: center;
-    padding: 90px 20px;
-    background: #eaf1ff;
+    padding: 105px 20px 95px;
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
 }
 
 .hero h1 {
-    font-size: 43px;
-    margin-bottom: 18px;
+    font-size: clamp(34px, 5vw, 54px);
+    line-height: 1.2;
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: -1.5px;
 }
 
 .hero h1 span {
@@ -61,27 +93,35 @@ body {
 
 .hero p {
     color: #64748b;
+    font-size: 17px;
     margin-bottom: 25px;
 }
 
+/* SEARCH BOX */
+
 .search-box {
     background: white;
-    max-width: 850px;
-    margin: 30px auto;
-    padding: 12px;
+    max-width: 900px;
+    margin: 35px auto;
+    padding: 14px;
     display: flex;
-    gap: 10px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px #00000010;
+    gap: 12px;
+    border-radius: 14px;
+    box-shadow: 0 12px 35px rgba(37, 99, 235, 0.12);
 }
 
 .search-box input {
     flex: 1;
     min-width: 0;
-    padding: 14px;
+    padding: 16px;
     border: 1px solid #e2e8f0;
-    border-radius: 6px;
+    border-radius: 9px;
     outline: none;
+    font-size: 15px;
+}
+
+.search-box input:focus {
+    border-color: #2563eb;
 }
 
 .search-box button,
@@ -89,110 +129,174 @@ body {
     background: #2563eb;
     color: white;
     border: none;
-    padding: 13px 22px;
-    border-radius: 6px;
+    padding: 14px 25px;
+    border-radius: 9px;
     cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.search-box button:hover,
+.job-card button:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
 }
 
 .popular {
-    font-size: 14px;
+    font-size: 14px !important;
+    color: #64748b;
 }
 
+/* FEATURED JOBS */
+
 .jobs {
-    padding: 65px 8%;
+    padding: 80px 8%;
     text-align: center;
 }
 
 .jobs h2,
 .about h2 {
-    font-size: 30px;
+    font-size: 34px;
+    font-weight: 800;
+    color: #172554;
 }
 
 .subtitle {
     color: #64748b;
-    margin: 12px 0 35px;
+    margin: 12px 0 40px;
+    font-size: 16px;
 }
 
 .job-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
 }
 
 .job-card {
     background: white;
-    padding: 28px;
-    border-radius: 10px;
+    padding: 30px;
+    border-radius: 14px;
     text-align: left;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #e5eaf3;
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.04);
+    transition: 0.3s;
+}
+
+.job-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(37, 99, 235, 0.10);
+    border-color: #bfdbfe;
 }
 
 .job-card h3 {
     margin-bottom: 12px;
-    color: #1e40af;
+    color: #1d4ed8;
+    font-size: 21px;
 }
 
 .job-card p {
     margin-bottom: 12px;
+    color: #475569;
 }
 
 .details {
-    color: #64748b;
+    color: #64748b !important;
     font-size: 14px;
 }
 
 .tag {
     display: inline-block;
-    background: #eaf1ff;
+    background: #eff6ff;
     color: #2563eb;
     padding: 7px 12px;
-    border-radius: 5px;
+    border-radius: 20px;
     font-size: 12px;
+    font-weight: 600;
     margin: 5px 3px 18px 0;
 }
 
 .job-card button {
-    display: block;
+    display: inline-block;
     margin-top: 10px;
 }
 
+#no-results {
+    color: #64748b;
+    margin-top: 25px;
+}
+
+/* ABOUT SECTION */
+
 .about {
     background: white;
-    padding: 55px 20px;
+    padding: 75px 20px;
     text-align: center;
 }
 
 .about p {
     margin-top: 15px;
     color: #64748b;
+    font-size: 16px;
 }
+
+/* FOOTER */
 
 footer {
     background: #172554;
     color: white;
-    padding: 25px;
+    padding: 30px 20px;
     text-align: center;
+    font-size: 14px;
 }
 
-@media (max-width: 768px) {
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 900px) {
     .navbar {
+        padding: 18px 5%;
         flex-wrap: wrap;
         gap: 18px;
     }
 
-    .nav-links a {
-        margin-left: 8px;
+    .job-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
     }
 
-    .job-container {
-        grid-template-columns: 1fr;
+    .nav-links,
+    .nav-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+    }
+
+    .nav-links a,
+    .nav-buttons a {
+        margin: 0;
+    }
+
+    .hero {
+        padding: 75px 18px;
     }
 
     .search-box {
         flex-direction: column;
     }
 
-    .hero h1 {
-        font-size: 32px;
+    .job-container {
+        grid-template-columns: 1fr;
+    }
+
+    .jobs h2,
+    .about h2 {
+        font-size: 28px;
     }
 }

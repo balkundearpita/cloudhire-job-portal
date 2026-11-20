@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,55 +11,69 @@
 
     <style>
         .details-page {
-            max-width: 950px;
-            margin: 50px auto;
+            max-width: 1000px;
+            margin: 55px auto;
             padding: 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 22px;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
         }
 
         .details-card {
             background: white;
-            padding: 35px;
-            border-radius: 12px;
+            padding: 45px;
+            border-radius: 18px;
             border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 15px #00000008;
+            box-shadow: 0 12px 35px rgba(15, 23, 42, 0.06);
         }
 
         .details-card h1 {
-            color: #1e40af;
-            margin-bottom: 12px;
+            color: #172554;
+            font-size: 34px;
+            margin-bottom: 8px;
         }
 
         .company {
-            color: #475569;
+            color: #64748b;
             font-size: 18px;
+            font-weight: 600;
         }
 
         .job-info {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
-            margin: 25px 0;
+            margin: 28px 0;
         }
 
         .info-item {
-            background: #eaf1ff;
+            background: #eff6ff;
             color: #2563eb;
-            padding: 12px 18px;
-            border-radius: 6px;
+            padding: 11px 18px;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: 600;
         }
 
         .details-card h2 {
-            margin: 25px 0 15px;
+            color: #172554;
+            margin: 30px 0 13px;
             font-size: 21px;
         }
 
         .description {
             color: #475569;
-            line-height: 1.8;
+            line-height: 1.9;
+            font-size: 16px;
         }
 
         .requirements {
-            padding-left: 22px;
+            padding-left: 23px;
             line-height: 2;
             color: #475569;
         }
@@ -69,31 +83,47 @@
             background: #2563eb;
             color: white;
             border: none;
-            padding: 13px 28px;
-            border-radius: 6px;
-            margin-top: 25px;
+            padding: 15px 35px;
+            border-radius: 9px;
+            margin-top: 30px;
             cursor: pointer;
-            font-size: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .apply-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
         }
 
         .apply-btn:disabled {
             background: #16a34a;
             cursor: not-allowed;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #2563eb;
-            text-decoration: none;
+            transform: none;
         }
 
         .message {
-            padding: 12px;
-            background: #eaf1ff;
+            padding: 14px;
+            background: #eff6ff;
             color: #1e40af;
-            border-radius: 6px;
+            border-radius: 9px;
             margin-bottom: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .details-page {
+                margin: 25px auto;
+                padding: 14px;
+            }
+
+            .details-card {
+                padding: 25px;
+            }
+
+            .details-card h1 {
+                font-size: 27px;
+            }
         }
     </style>
 </head>
@@ -106,6 +136,7 @@
         <div class="nav-links">
             <a href="/">Home</a>
             <a href="/#jobs">Find Jobs</a>
+
             {% if session.get('user_email') %}
                 <a href="/dashboard">Dashboard</a>
             {% else %}
@@ -127,7 +158,6 @@
         <div class="details-card">
 
             <h1>{{ job.title }}</h1>
-
             <p class="company">{{ job.company }}</p>
 
             <div class="job-info">
@@ -137,7 +167,6 @@
             </div>
 
             <h2>Job Description</h2>
-
             <p class="description">{{ job.description }}</p>
 
             <h2>Required Skills</h2>
@@ -158,23 +187,18 @@
                   action="{{ url_for('apply_job', job_id=job.id) }}">
 
                 {% if already_applied %}
-
                     <button class="apply-btn" disabled>
                         Already Applied
                     </button>
-
                 {% else %}
-
                     <button type="submit" class="apply-btn">
-                        Apply Now
+                        Apply Now →
                     </button>
-
                 {% endif %}
 
             </form>
 
         </div>
-
     </section>
 
     <footer>
@@ -183,3 +207,4 @@
 
 </body>
 </html>
+```
